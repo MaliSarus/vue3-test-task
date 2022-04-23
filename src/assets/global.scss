@@ -1,0 +1,185 @@
+*{
+  box-sizing: border-box;
+}
+
+.label {
+  display: block;
+  text-align: left;
+  margin-bottom: 10px;
+
+  span {
+    display: block;
+  }
+
+  input {
+    width: 100%;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #c5c9d3;
+  }
+}
+
+form {
+  margin: auto;
+  width: 50vw;
+  padding: 50px;
+  border: 1px solid #c5c9d3;
+  border-radius: 15px;
+}
+
+.card {
+  margin-bottom: 50px;
+  position: relative;
+  height: 250px;
+  width: 400px;
+  font-weight: 600;
+  margin-left: auto;
+  margin-right: auto;
+  &.cvv{
+    .card {
+      &__front {
+        transform: perspective(1000px) rotateY(-180deg);
+      }
+      &__back{
+        transform: perspective(1000px) rotateY(0deg);
+      }
+    }
+  }
+  &.visa{
+    .card {
+      &__front {
+        background: linear-gradient(45deg, #4486c8, #16528e);
+
+      }
+
+      &__back {
+        background: linear-gradient(45deg, #4486c8, #16528e);
+      }
+    }
+  }
+  &.mastercard{
+    .card {
+      &__front {
+        background: linear-gradient(45deg, #d1953a, #ec5a55);
+
+      }
+
+      &__back {
+        background: linear-gradient(45deg, #d1953a, #ec5a55);
+      }
+    }
+  }
+
+  &__front {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(45deg, #d5d1d1, #929090);
+    border-radius: 5px;
+    backface-visibility: hidden;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: transform .4s ease-out;
+    transform: perspective(1000px) rotateY(0deg);
+
+
+
+    .card-front {
+      &__number {
+        input {
+          border: none;
+          outline: none;
+          padding: 30px 0;
+          font-size: 22px;
+          color: white;
+          background: transparent;
+          display: block;
+
+          &::placeholder {
+            font-size: 22px;
+            color: white;
+          }
+        }
+      }
+
+      &__bottom {
+        display: flex;
+        color: white;
+        text-align: left;
+
+        input {
+          font-size: 15px;
+          color: white;
+          display: block;
+          background: transparent;
+          border: none;
+          outline: none;
+          &::placeholder {
+            font-size: 1em;
+            color: currentColor;
+          }
+        }
+      }
+
+      &__holder {
+        margin-right: auto;
+      }
+
+      &__expiry {
+        input {
+          width: 50px;
+        }
+      }
+    }
+  }
+  &__back{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(45deg, #d5d1d1, #929090);
+    border-radius: 5px;
+    padding: 20px 0 ;
+    text-align: right;
+    backface-visibility: hidden;
+    color: white;
+    transition: transform .4s ease-out;
+    transform: perspective(1000px) rotateY(180deg);
+    .card-back{
+      &__stripe{
+        background: #000;
+        width: 100%;
+        margin: 10px 0;
+        height: 50px;
+      }
+      &__cvv{
+        span{
+          color: white;
+          font-size: 15px;
+          margin-right: 10px;
+        }
+        input{
+          font-size: 15px;
+          background: transparent;
+          outline: none;
+          border: none;
+          width: 50px;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+button[type="submit"]{
+  background: cornflowerblue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+}
